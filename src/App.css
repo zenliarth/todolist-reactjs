@@ -1,0 +1,95 @@
+html,
+div,
+ul,
+li,
+h1,
+p {
+  padding: 0;
+  margin: 0;
+}
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+  font-family: 'IBM Plex Mono', monospace;
+}
+#root {
+  width: 100%;
+  height: 100vh;
+}
+.main {
+  width: 100%;
+  height: 100%;
+  background: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container {
+  width: 350px;
+  height: 100px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px;
+  margin-top: 50px;
+}
+.container h1 {
+  padding-left: 10px;
+  color: #ddd;
+}
+form {
+  width: 100%;
+  margin: 10px 0 20px 5px;
+  text-align: center;
+}
+form input {
+  padding: 5px;
+  width: 250px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+  margin-top: 5px;
+  margin-bottom: -5px;
+}
+form input:focus,
+input:hover {
+  outline: 2px solid palevioletred;
+}
+.boxContador {
+  width: 350px;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  margin-top: 10px;
+  color: #ddd;
+}
+.list {
+  width: 350px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  margin-top: 10px;
+  color: #ddd;
+}
+.list ul {
+  width: 100%;
+  margin: 10px;
+}
+.list ul li {
+  font-size: 1.1rem;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

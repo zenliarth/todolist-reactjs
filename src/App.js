@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
+import { Button } from './Components/Button';
 
 function App() {
   const [value, setValue] = React.useState('');
   const [list, setList] = React.useState([]);
   const [count, setCount] = React.useState(0);
-
-  window.localStorage.setItem('Lista', list);
 
   const handleAdd = () => {
     if (value === '') {
@@ -21,12 +20,13 @@ function App() {
     }
   };
   const handleRemove = (index) => {
-    const lista = [...list];
+    // Tentei com filter mas fica dando um bug que ainda nao resolvi.
+    /* const lista = [...list];
     const listaFilter = lista.filter((item, i) => item[i] !== item[index]); // segunda forma com filter
-    setList(listaFilter);
+    setList(listaFilter); */
+    setList([...list, list.splice(index, 1)]);
+    setList([...list]);
     setCount(count >= 0 ? count - 1 : count);
-    /* setList([...list, list.splice(index, 1)]); // Primeira forma que fiz.
-    setList([...list]); */
   };
 
   const handleDelete = () => {
@@ -36,35 +36,40 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <div className="boxToDo">
+    <div className="main">
+      <div className="container">
         <h1>Minha Lista</h1>
         <form onSubmit={(e) => e.preventDefault()}>
           <label htmlFor="/">
             <input
+              maxLength="50"
               type="text"
               value={value}
               onChange={(e) => setValue(e.target.value)}
             />
           </label>
-          <button type="submit" onClick={handleAdd}>
+          <Button type="submit" onClick={handleAdd}>
             add
-          </button>
+          </Button>
         </form>
       </div>
-      <div className="list">
-        <ul>
-          {list.map((item, index) => (
-            <li key={index}>
-              {item}
-              <button onClick={() => handleRemove(index)}>X</button>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {list.length > 0 && (
+        <div className="list">
+          <ul>
+            {list.map((item, index) => (
+              <li key={index}>
+                &#11166;&nbsp;
+                {item}
+                <Button onClick={() => handleRemove(index)}>X</Button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <div className="boxContador">
         <p>Total Tasks: {count}</p>
-        <button onClick={handleDelete}>Limpar Lista</button>
+        <Button onClick={handleDelete}>Limpar Lista</Button>
       </div>
     </div>
   );
